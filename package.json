@@ -1,0 +1,30 @@
+{
+  "name": "react-render-router",
+  "version": "1.0.0",
+  "description": "react component render control",
+  "main": "index.js",
+  "scripts": {
+    "examples:basic": "DIR=basic EXT=js webpack-dev-server"
+  },
+  "keywords": [
+    "render-control",
+    "react"
+  ],
+  "author": "youchaoliu@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "invariant": "^2.2.4",
+    "jest": "^24.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "ts-loader": "^6.0.4",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
