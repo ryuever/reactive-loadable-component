@@ -18,6 +18,7 @@ const Component = props => {
   }, [])
 
   if (!emitter.check(trigger)) return null
+  if (!component) return props.children
   if (!async) return React.createElement(component, { ...props })
   return <AsyncComponent {...props} />
 }
