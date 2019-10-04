@@ -1,3 +1,3 @@
 import React from 'react'
 
-const context = React.createContext()
+export default React.createContext(null, () => 0b00)

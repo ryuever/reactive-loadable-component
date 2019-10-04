@@ -1,18 +1,21 @@
 {
-  "name": "react-render-router",
+  "name": "reactive-loadable-component",
   "version": "1.0.0",
-  "description": "react component render control",
+  "description": "reactive loadable component",
   "main": "index.js",
   "scripts": {
-    "examples:basic": "DIR=basic EXT=js webpack-dev-server"
+    "examples:basic": "DIR=basic EXT=js webpack-dev-server",
+    "examples:multiple-provider": "DIR=multiple-provider EXT=js webpack-dev-server"
   },
   "keywords": [
+    "loadable-component",
     "render-control",
+    "reactive",
     "react"
   ],
   "author": "youchaoliu@gmail.com",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
