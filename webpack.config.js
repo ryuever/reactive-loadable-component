@@ -31,7 +31,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      'react-render-router': __dirname,
+      'reactive-loadable-component': __dirname,
     },
   },
   devServer: {

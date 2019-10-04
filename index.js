@@ -1,7 +1,13 @@
-import ReactRenderRouter from './src/ReactRenderRouter'
-import Render from './src/Render'
+module.exports = {
+  get RenderProvider() {
+    return require('./src/Provider').default
+  },
 
-export {
-  ReactRenderRouter,
-  Render,
+  get ObservableComponent() {
+    return require('./src').default
+  },
+
+  get useNotify() {
+    return require('./src/useNotify').default
+  },
 }

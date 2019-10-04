@@ -1,12 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ReactRenderRouter, Render } from 'react-render-router'
+import { RenderProvider, ObservableComponent } from 'reactive-loadable-component'
+import B from './B'
+
+const ObservableA = () => require('./A').default
 
 const Basic = () => {
   return (
-    <ReactRenderRouter>
-      <Render />
-    </ReactRenderRouter>
+    <RenderProvider>
+      <ObservableComponent
+        component={ObservableA}
+        trigger="b-loaded"
+        async
+      />
+      <B />
+    </RenderProvider>
   )
 }
 
