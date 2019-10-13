@@ -1,6 +1,6 @@
 {
   "name": "reactive-loadable-component",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "reactive loadable component",
   "main": "index.js",
   "scripts": {
