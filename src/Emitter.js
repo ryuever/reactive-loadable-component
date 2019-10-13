@@ -19,19 +19,23 @@ export default class Emitter {
     }
 
     this.status[trigger] = true
-    this.subscriptions[trigger].forEach(cb => cb())
+
+    const keys = Object.keys(this.subscriptions[trigger])
+
+    keys.forEach(key => this.subscriptions[trigger][key]())
   }
 
   on(trigger, cb) {
     if (!this.subscriptions[trigger]) {
-      this.subscriptions[trigger] = []
+      this.subscriptions[trigger] = {}
     }
 
-    this.subscriptions[trigger].push(cb)
+    const key = this.id++
+
+    this.subscriptions[trigger][key] = cb
 
     return () => {
-      const index = this.subscriptions[trigger].indexOf(cb)
-      if (index !== -1) this.subscriptions[trigger].splice(index, 1)
+      delete this.subscriptions[trigger][key]
     }
   }
 }

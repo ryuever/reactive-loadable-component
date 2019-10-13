@@ -33,6 +33,8 @@ module.exports = {
     alias: {
       'reactive-loadable-component': __dirname,
     },
+    // fix npm link error `https://github.com/webpack/webpack/issues/811`
+    symlinks: false,
   },
   devServer: {
     port: process.env.PORT || '8080',

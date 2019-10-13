@@ -3,8 +3,12 @@ module.exports = {
     return require('./src/Provider').default
   },
 
-  get ObservableComponent() {
-    return require('./src').default
+  get TriggeredComponent() {
+    return require('./src/TriggeredComponent').default
+  },
+
+  get LoadableComponent() {
+    return require('./src/LoadableComponent').default
   },
 
   get useNotify() {

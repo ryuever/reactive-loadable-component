@@ -8,12 +8,11 @@ const Component = props => {
   const [state, setState] = useState(0)
 
   useEffect(() => {
-    if (!emitter.check[trigger]) {
+    if (!emitter.check(trigger)) {
       const remove = emitter.on(trigger, () => {
         setState(state + 1)
         remove()
       })
-      return remove
     }
   }, [])
 
