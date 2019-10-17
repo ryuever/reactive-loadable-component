@@ -1,22 +1,32 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react'
 import AsyncComponent from './AsyncComponent'
 import Context from './Context'
 
 const Component = props => {
   const { component, trigger, emit, async, ...rest } = props
   const emitter = useContext(Context)
-  const [state, setState] = useState(0)
+  const [state, setState] = useState(false)
+  const pending = useRef({})
 
   useEffect(() => {
-    if (!emitter.check(trigger)) {
-      const remove = emitter.on(trigger, () => {
-        setState(state + 1)
-        remove()
+    const next = [].concat(trigger)
+    if (Array.isArray(next)) {
+      next.forEach(dep => {
+        pending.current[dep] = false
+        const remove = emitter.on(dep, () => {
+          pending.current[dep] = true
+          remove()
+
+          if (next.every(dep => pending.current[dep])) {
+            setState(true)
+          }
+        })
       })
     }
   }, [])
 
-  if (!emitter.check(trigger)) return null
+  if (!state) return null
+
   if (!component) return props.children
   if (!async) return React.createElement(component, { ...props })
   return <AsyncComponent {...props} />
