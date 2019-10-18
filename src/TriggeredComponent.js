@@ -10,8 +10,10 @@ const Component = props => {
 
   useEffect(() => {
     const next = [].concat(trigger)
-    if (Array.isArray(next)) {
-      next.forEach(dep => {
+    next.forEach(dep => {
+      if (emitter.check(dep)) {
+        pending.current[dep] = true
+      } else {
         pending.current[dep] = false
         const remove = emitter.on(dep, () => {
           pending.current[dep] = true
@@ -21,12 +23,15 @@ const Component = props => {
             setState(true)
           }
         })
-      })
+      }
+    })
+
+    if (next.every(dep => pending.current[dep])) {
+      setState(true)
     }
   }, [])
 
   if (!state) return null
-
   if (!component) return props.children
   if (!async) return React.createElement(component, { ...props })
   return <AsyncComponent {...props} />
